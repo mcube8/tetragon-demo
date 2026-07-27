@@ -1,0 +1,19 @@
+apiVersion: cilium.io/v1alpha1
+kind: TracingPolicy
+metadata:
+  name: "demo-process-ancestry"
+spec:
+  kprobes:
+  - call: "sys_execve"
+    syscall: true
+    message: "demo process exec"
+    args:
+    - index: 0
+      type: "filename"
+    selectors:
+    - matchArgs:
+      - index: 0
+        operator: "Prefix"
+        values:
+        - "/bin/"
+        - "/usr/bin/"

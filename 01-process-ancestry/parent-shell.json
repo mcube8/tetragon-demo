@@ -1,0 +1,60 @@
+{
+    "process_exec": {
+        "process": {
+            "exec_id": "ZWRhYTU5MmE5ODFiOjM2MDkxMzE4MzMwMzY6MTQ2ODU=",
+            "pid": 14685,
+            "uid": 1000,
+            "cwd": "/var/tmp/malvika/tetragon-demo/01-process-ancestry",
+            "binary": "/usr/bin/bash",
+            "arguments": "./workload.sh",
+            "flags": "execve",
+            "start_time": "2026-07-26T08:04:02.252565931Z",
+            "auid": 4294967295,
+            "parent_exec_id": "ZWRhYTU5MmE5ODFiOjA6Mjc4OQ==",
+            "tid": 14685,
+            "in_init_tree": false
+        }
+    },
+    "node_name": "edaa592a981b",
+    "time": "2026-07-26T08:04:02.252564388Z"
+}
+{
+    "process_exec": {
+        "process": {
+            "exec_id": "ZWRhYTU5MmE5ODFiOjM2MDkxMzMwNTIzNjE6MTQ2ODY=",
+            "pid": 14686,
+            "uid": 1000,
+            "cwd": "/var/tmp/malvika/tetragon-demo/01-process-ancestry",
+            "binary": "/usr/bin/bash",
+            "arguments": "-c \"\n  set -euo pipefail\n  marker=$1\n  echo \"parent-shell marker=${marker} pid=$$ ppid=$PPID\"\n  /usr/bin/env bash -c '\n    set -euo pipefail\n    marker=$1\n    echo \"child-shell marker=${marker} pid=$$ ppid=$PPID\"\n    /usr/bin/id >/dev/null\n    /bin/echo \"grandchild marker=${marker}\"\n  ' bash \"$marker\"\n  echo \"parent-shell observed child completion\"\n\" bash tetragon-process-ancestry",
+            "flags": "execve",
+            "start_time": "2026-07-26T08:04:02.253784406Z",
+            "auid": 4294967295,
+            "parent_exec_id": "ZWRhYTU5MmE5ODFiOjA6MTQ2ODU=",
+            "tid": 14686,
+            "in_init_tree": false
+        }
+    },
+    "node_name": "edaa592a981b",
+    "time": "2026-07-26T08:04:02.253783714Z"
+}
+{
+    "process_exec": {
+        "process": {
+            "exec_id": "ZWRhYTU5MmE5ODFiOjM2MDkxMzQ4ODA4ODQ6MTQ2ODc=",
+            "pid": 14687,
+            "uid": 1000,
+            "cwd": "/var/tmp/malvika/tetragon-demo/01-process-ancestry",
+            "binary": "/usr/bin/bash",
+            "arguments": "-c \"\n    set -euo pipefail\n    marker=$1\n    echo \"child-shell marker=${marker} pid=$$ ppid=$PPID\"\n    /usr/bin/id >/dev/null\n    /bin/echo \"grandchild marker=${marker}\"\n  \" bash tetragon-process-ancestry",
+            "flags": "execve",
+            "start_time": "2026-07-26T08:04:02.255613064Z",
+            "auid": 4294967295,
+            "parent_exec_id": "ZWRhYTU5MmE5ODFiOjA6MTQ2ODY=",
+            "tid": 14687,
+            "in_init_tree": false
+        }
+    },
+    "node_name": "edaa592a981b",
+    "time": "2026-07-26T08:04:02.255612238Z"
+}

@@ -1,0 +1,37 @@
+apiVersion: cilium.io/v1alpha1
+kind: TracingPolicy
+metadata:
+  name: "demo-secret-file-enforcement"
+
+spec:
+  kprobes:
+  - call: "security_file_permission"
+    syscall: false
+    return: true
+
+    message: "sensitive file read blocked"
+
+    args:
+    - index: 0
+      type: "file"
+    - index: 1
+      type: "int"
+
+    returnArg:
+      index: 0
+      type: "int"
+
+    selectors:
+    - matchArgs:
+      - index: 0
+        operator: "Equal"
+        values:
+        - "/tmp/tetragon-demo-secret"
+
+      - index: 1
+        operator: "Equal"
+        values:
+        - "4"
+
+      matchActions:
+      - action: Sigkill

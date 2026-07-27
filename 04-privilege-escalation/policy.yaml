@@ -1,0 +1,18 @@
+apiVersion: cilium.io/v1alpha1
+kind: TracingPolicy
+metadata:
+  name: "demo-privilege-monitoring"
+
+spec:
+  kprobes:
+    - call: "commit_creds"
+      syscall: false
+      message: "process credentials changed"
+
+      args:
+        - index: 0
+          type: "cred"
+
+      selectors:
+        - matchActions:
+            - action: Post
