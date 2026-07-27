@@ -36,7 +36,3 @@ Each scenario README includes the specific runtime steps for that demo.
 - If `/sys/kernel/btf/vmlinux` is missing, use a newer kernel or a host/VM with
   BTF enabled.
 
-## Assets
-
-`assets/architecture.png` and `assets/demo.gif` are placeholders for the
-architecture diagram and recorded demo.
